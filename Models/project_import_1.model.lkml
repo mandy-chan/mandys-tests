@@ -11,6 +11,10 @@ include: "/Views/Subfolder_views/connection_reg_r3.view"
 
 include: "//project_import_2/product_categories.view"
 
+# include: "//doing_remote_project_import/ga_block.view.lkml"
+
+# include: "//doing_remote_project_import/*.view"
+
 include: "/Views/Subfolder_views/*.view"
 
 datagroup: project_import_1_default_datagroup {
@@ -19,6 +23,8 @@ datagroup: project_import_1_default_datagroup {
 }
 
 persist_with: project_import_1_default_datagroup
+
+# explore: ga_sessions {}
 
 explore: connection_reg_r3 {}
 
@@ -72,7 +78,7 @@ explore: orders {
   }
 }
 
-explore: product_categories {}
+# explore: product_categories {}
 
 explore: schema_migrations {}
 
