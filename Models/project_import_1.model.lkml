@@ -8,12 +8,9 @@ include: "/Views/orders.view"
 include: "/Views/products.view"
 include: "/Views/users.view"
 include: "/Views/derived_table.view"
-include: "/Views/Subfolder_views/connection_reg_r3.view"
 
 # include: "//project_import_2/product_categories.view"
 
-include: "/Views/Subfolder_views/*.view"
-include: "/views/*"
 
 datagroup: project_import_1_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -21,8 +18,6 @@ datagroup: project_import_1_default_datagroup {
 }
 
 persist_with: project_import_1_default_datagroup
-
-explore: connection_reg_r3 {}
 
 explore: derived_table {
   join: order_items {
@@ -82,24 +77,5 @@ explore: orders {
   }
 }
 
-# explore: product_categories {}
-
-explore: schema_migrations {}
-
-explore: user_data {
-  join: users {
-    type: left_outer
-    sql_on: ${user_data.user_id} = ${users.id} ;;
-    relationship: many_to_one
-  }
-}
 
 explore: users {}
-
-explore: users_nn {}
-
-explore: zozo_table_20190507 {}
-
-explore: zozo_table_20190508 {}
-
-explore: zozo_table_null {}
