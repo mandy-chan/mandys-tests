@@ -7,11 +7,13 @@ include: "/Views/order_items.view"
 include: "/Views/orders.view"
 include: "/Views/products.view"
 include: "/Views/users.view"
+include: "/Views/derived_table.view"
 include: "/Views/Subfolder_views/connection_reg_r3.view"
 
-include: "//project_import_2/product_categories.view"
+# include: "//project_import_2/product_categories.view"
 
 include: "/Views/Subfolder_views/*.view"
+include: "/views/*"
 
 datagroup: project_import_1_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -21,6 +23,12 @@ datagroup: project_import_1_default_datagroup {
 persist_with: project_import_1_default_datagroup
 
 explore: connection_reg_r3 {}
+
+explore: derived_table {
+  join: order_items {
+    sql_on: ${order_items.id} = ${order_items.id} ;;
+  }
+  }
 
 explore: events {
   join: users {
@@ -37,6 +45,8 @@ explore: inventory_items {
     relationship: many_to_one
   }
 }
+
+explore: products {}
 
 explore: order_items {
   join: orders {
@@ -72,7 +82,7 @@ explore: orders {
   }
 }
 
-explore: product_categories {}
+# explore: product_categories {}
 
 explore: schema_migrations {}
 

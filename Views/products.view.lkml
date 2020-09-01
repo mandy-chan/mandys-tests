@@ -10,6 +10,10 @@ view: products {
   dimension: brand {
     type: string
     sql: ${TABLE}.brand ;;
+    link: {
+      label: "Go to Faceted Filters 2 Dashboard"
+      url: "/dashboards-next/4319?Category={{ _filters['products.category'] }}&Department={{ _filters['products.department'] }}"
+    }
   }
 
   dimension: category {

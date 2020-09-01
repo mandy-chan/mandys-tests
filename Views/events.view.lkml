@@ -7,6 +7,22 @@ view: events {
     sql: ${TABLE}.id ;;
   }
 
+  parameter: product_metric {
+    type: unquoted
+    default_value: "ordered"
+
+    allowed_value: {
+      label: "Ordered"
+      value: "ordered"
+    }
+
+    allowed_value: {
+      label: "Returned"
+      value: "returned"
+    }
+
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -35,6 +51,11 @@ view: events {
   dimension: value {
     type: string
     sql: ${TABLE}.value ;;
+  }
+
+  dimension: value_editted {
+    type: string
+    sql: concat(${TABLE}.value, "edit");;
   }
 
   measure: count {

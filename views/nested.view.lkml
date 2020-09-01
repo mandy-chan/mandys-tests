@@ -45,6 +45,10 @@ view: nested {
   dimension: social_engagement_type {
     type: string
     sql: ${TABLE}.socialEngagementType ;;
+    link: {
+      label: "Go to Faceted Filters 2 Dashboard"
+      url: "/dashboards-next/4319?ChannelGrouping={{ _filters['channelGrouping'] }}&FullVisitorID={{ _filters['nested.fullVisitorId'] }}"
+    }
   }
 
   dimension: totals {

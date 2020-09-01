@@ -26,6 +26,11 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+  measure: group_concat_status {
+    type: string
+    sql: group_concat(${status}) ;;
+  }
+
   dimension: user_id {
     type: number
     # hidden: yes
