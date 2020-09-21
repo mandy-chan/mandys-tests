@@ -4,7 +4,7 @@ test: historic_revenue_is_accurate {
       field: products.id
     }  }
   assert: revenue_is_expected_value {
-    expression: ${products.retail_price} = 1000 ;;
+    expression: ${products.id} = 1000 ;;
   }
 }
 
