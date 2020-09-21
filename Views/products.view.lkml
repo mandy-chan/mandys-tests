@@ -19,6 +19,10 @@ view: products {
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
+    link: {
+      label: "testing"
+      url: "/dashboards/4319?Department&f[products.department]='IS NULL'"
+    }
   }
 
   dimension: department {
@@ -39,6 +43,11 @@ view: products {
   dimension: retail_price {
     type: number
     sql: ${TABLE}.retail_price ;;
+  }
+
+  measure: sum_retail_price {
+    type: sum
+    sql: ${retail_price} ;;
   }
 
   dimension: sku {

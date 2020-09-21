@@ -17,6 +17,16 @@ view: users {
     sql: ${TABLE}.city ;;
   }
 
+  measure: group_concat_city {
+    type: string
+    sql: group_concat(DISTINCT ${city}) ;;
+  }
+
+  measure: measure_id {
+    type: string
+    sql: ${id};;
+  }
+
   dimension: country {
     type: string
     map_layer_name: countries

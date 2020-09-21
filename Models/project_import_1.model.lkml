@@ -1,3 +1,13 @@
+test: historic_revenue_is_accurate {
+  explore_source: products {
+    column: total_revenue {
+      field: products.id
+    }  }
+  assert: revenue_is_expected_value {
+    expression: ${products.retail_price} = 1000 ;;
+  }
+}
+
 connection: "thelook"
 
 # include all the views
@@ -20,12 +30,14 @@ datagroup: project_import_1_default_datagroup {
 persist_with: project_import_1_default_datagroup
 
 explore: derived_table {
+  label: "Vehicle Events Cube (Deprecated)"
   join: order_items {
     sql_on: ${order_items.id} = ${order_items.id} ;;
   }
   }
 
 explore: events {
+  label: "Vehicle Status Cube"
   join: users {
     type: left_outer
     sql_on: ${events.user_id} = ${users.id} ;;
@@ -34,6 +46,7 @@ explore: events {
 }
 
 explore: inventory_items {
+  label: "Mandy should not be hidden"
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
